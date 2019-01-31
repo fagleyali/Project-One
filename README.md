@@ -19,9 +19,10 @@ A game where one player can guess the correct color square among the 6 squares g
 
 <!-- Technologies used-->
 
-#Html
-#JavaScript
-#CSS
+- Html
+- JavaScript
+- CSS
+
 
 <!-- Getting started -->
 
