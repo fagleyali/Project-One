@@ -7,13 +7,13 @@ A game where one player can guess the correct color square among the 6 squares g
 
 <!-- Screenshots of game go here -->
 
-![Screen Shot of Game](./images/wireframe.png)
-![Screen Shot of Game]
-![Screen Shot of Game]
+!(./images/ScreenShot1.png)
+!(./images/ScreenShot2.png)
+!(./images/ScreenShot3.png)
 
 <!-- Screenshots of wireframe -->
 
-![Screen Shot of Game](#)
+!(./images/wireframe.png)
 ![Screen Shot of Game]
 ![Screen Shot of Game]
 
