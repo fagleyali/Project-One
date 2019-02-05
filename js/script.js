@@ -2,22 +2,24 @@
 /*----- constants -----*/ 
 const MAX_NUM_SQUARES = 6;
 const MIN_NUM_SQUARES = 3;
-
+const bannerColorArr = ['rgb(145,112,249)','rgb(141, 108, 71)'];
 /*----- app's state (variables) -----*/ 
 let numOfSquares;
 let pickedColor;
-
-
 /*----- cached element references -----*/ 
-let squares = document.querySelectorAll('.square1');
-let hardMode = document.querySelectorAll('.square1')
-let easyMode = document.querySelectorAll('#container1 .square1')
-let divs = document.querySelectorAll('#container2 div');
+let squares = document.querySelectorAll('#container1  div,#container2 div');
+let easyMode = document.querySelectorAll('#container1 div')
+let hardMode = document.querySelectorAll('#container1  div,#container2 div');
 const messageDisplay = document.getElementById('message');
 const reset = document.getElementById('reset');
 const selected = document.querySelector('.selected');
 const modes = document.querySelectorAll('.mode');
 let rgbCodeDisplay = document.querySelector('#rgb');
+let banners = document.querySelectorAll('header, section#stripe');
+
+
+
+
 
 /*----- event listeners -----*/ 
 modes.forEach(function(mode){
@@ -25,8 +27,12 @@ modes.forEach(function(mode){
 })
 
 squares.forEach(function(square){
-    square.addEventListener('click',checkedRGB)
+    square.addEventListener('click',checkRGB)
 })
+
+reset.addEventListener('click', init);
+
+
 
 
 /*----- functions -----*/
@@ -35,24 +41,35 @@ init();
 
 
 function init(){
-    numOfSquares = MAX_NUM_SQUARES;
-    getSquaresColor(hardMode,numOfSquares);
-    console.log(hardMode)
-    console.log(easyMode)
-
+    numOfSquares = {
+        e: 3,
+        h: 6
+    };
+    render();
     
-   
 }
 
-function checkedRGB(evt){
+function render(){
+    modesClear();
+    clearSquareClass();
+    getSquaresColor(hardMode,numOfSquares.h);
+    selected.classList.add('selected');
+    toggleBannerColors(code);
+}
+
+
+function checkRGB(evt){
     let rgbCode = evt.target.style.background;
-    rgbCode === pickedColor? getAllSameColor(rgbCode):evt.target.classList.remove('square1');
+   
+    rgbCode === pickedColor? getAllSameColor(rgbCode):evt.target.style.background='rgb(23,23,23)';
+   
 }
 
 function getAllSameColor(code){
     squares.forEach(function(square){
         square.style.background = code;
     })
+    toggleBannerColors(code);
 }
 
 
@@ -64,42 +81,37 @@ function modesClear(){
 
 function handleGo(evt){
     modesClear();
+    clearSquareClass();
+    toggleBannerColors();
     evt.target.className = 'mode selected';
     let mode = evt.target.textContent
-    numOfSquares = evt.target.textContent === 'Hard'? MAX_NUM_SQUARES: MIN_NUM_SQUARES;
+    mode === 'Easy'? getSquaresColor(easyMode,numOfSquares.e): getSquaresColor(hardMode,numOfSquares.h);
+}
+
+function clearSquareClass(){
+    squares.forEach(function(square){
+        square.classList.remove('square1');
+    })
+}
+
+function toggleBannerColors(str){
     
-     mode === 'Easy'? deleteSquares(): addSquares();
-    
-//    getSquaresColor(numOfSquares);
+    if (str !== undefined){
+        banners.forEach(function(banner, idx){
+            banner.style.background = str;
+        })
 
+    }else if (str === undefined){
+        banners.forEach(function(banner, idx){
+            banner.style.background=bannerColorArr[idx];
+        })
+    }
 }
-
-function modeSelection(){
-
-}
-
-function deleteSquares(){
-    // squares.forEach(function(square, idx){
-    //     idx > 2?square.classList.remove('square1'): null;
-    // })
-    // squares = document.querySelectorAll('.square1');
-    getSquaresColor(easyMode,3);
-}
-
-function addSquares(){
-    // divs.forEach(function(div,idx){        
-    //      div.classList.add('square1');
-    // })
-    // squares = document.querySelectorAll('.square1');
-    getSquaresColor(hardMode,6);
-}
-
-
 
 function getSquaresColor(arr,num){
     let id = getRandomNumber(num);
     arr.forEach(function(elm, idx){
-    id === idx? (pickedColor = getRGBCode(),elm.style.background=pickedColor): elm.style.background=getRGBCode();
+    id === idx? (pickedColor = getRGBCode(),elm.classList.add('square1'),elm.style.background=pickedColor): (elm.classList.add('square1'),elm.style.background=getRGBCode());
     })
     rgbCodeDisplay.textContent = pickedColor;
 }
@@ -108,7 +120,7 @@ function getRGBCode(){
     let r = getRandomNumber(256);
     let g = getRandomNumber(256);
     let b = getRandomNumber(256);
-    return (`rgb(${r},${g},${b})`);
+    return (`rgb(${r}, ${g}, ${b})`);
 }
 
 function getRandomNumber(num){
