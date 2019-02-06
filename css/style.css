@@ -110,10 +110,17 @@ button {
 }
 
 button:hover{
-    background: steelblue;
+    background: rgb(145,112,249);
 }
 
 .selected {
-    background: steelblue;
+    background: rgb(145,112,249);
     color: white;
+}
+
+#message {
+    font-family: 'Lobster Two', cursive;
+    color: white;
+    font-weight: 700;
+    font-size: 30px;
 }

@@ -2,7 +2,8 @@
 /*----- constants -----*/ 
 const MAX_NUM_SQUARES = 6;
 const MIN_NUM_SQUARES = 3;
-const bannerColorArr = ['rgb(145,112,249)','rgb(141, 108, 71)'];
+const bannerColorArr = ['rgb(145,112,249)','rgb(141, 108, 71)','rgb(145,112,249)'];
+const message = 'You are correct!'
 /*----- app's state (variables) -----*/ 
 let numOfSquares;
 let pickedColor;
@@ -15,7 +16,7 @@ const reset = document.getElementById('reset');
 const selected = document.querySelector('.selected');
 const modes = document.querySelectorAll('.mode');
 let rgbCodeDisplay = document.querySelector('#rgb');
-let banners = document.querySelectorAll('header, section#stripe');
+let banners = document.querySelectorAll('header, section#stripe, .selected');
 
 
 
@@ -54,14 +55,15 @@ function render(){
     clearSquareClass();
     getSquaresColor(hardMode,numOfSquares.h);
     selected.classList.add('selected');
-    toggleBannerColors(code);
+    toggleBannerColors();
+    
 }
 
 
 function checkRGB(evt){
     let rgbCode = evt.target.style.background;
    
-    rgbCode === pickedColor? getAllSameColor(rgbCode):evt.target.style.background='rgb(23,23,23)';
+    rgbCode === pickedColor? (getAllSameColor(rgbCode),messageDisplay.textContent = message):evt.target.style.background='rgb(23,23,23)';
    
 }
 
@@ -76,7 +78,9 @@ function getAllSameColor(code){
 function modesClear(){
     modes.forEach(function(mode){
         mode.className = 'mode';
+       
     })
+    messageDisplay.textContent = '';
 };
 
 function handleGo(evt){
@@ -101,9 +105,9 @@ function toggleBannerColors(str){
             banner.style.background = str;
         })
 
-    }else if (str === undefined){
+    }else {
         banners.forEach(function(banner, idx){
-            banner.style.background=bannerColorArr[idx];
+            idx===2?  banner.style.background = '':banner.style.background=bannerColorArr[idx];
         })
     }
 }
