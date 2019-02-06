@@ -3,7 +3,10 @@
 const MAX_NUM_SQUARES = 6;
 const MIN_NUM_SQUARES = 3;
 const bannerColorArr = ['rgb(145,112,249)','rgb(141, 108, 71)','rgb(145,112,249)'];
-const message = 'You are correct!'
+const message = {
+    w:'You are correct!',
+    l:'Try again!'
+}
 /*----- app's state (variables) -----*/ 
 let numOfSquares;
 let pickedColor;
@@ -64,7 +67,7 @@ function checkRGB(evt){
     modesClear();
     let rgbCode = evt.target.style.background;
    
-    rgbCode === pickedColor? (getAllSameColor(rgbCode),messageDisplay.textContent = message):evt.target.style.background='rgb(23,23,23)';
+    rgbCode === pickedColor? (getAllSameColor(rgbCode),messageDisplay.textContent = message.w):(evt.target.style.background='rgb(23,23,23)',messageDisplay.textContent = message.l);
    
 }
 
