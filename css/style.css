@@ -115,7 +115,9 @@ button {
 
 button:hover{
     background: rgb(145,112,249);
+    
 }
+
 
 .selected {
     background: rgb(145,112,249);

@@ -61,6 +61,7 @@ function render(){
 
 
 function checkRGB(evt){
+    modesClear();
     let rgbCode = evt.target.style.background;
    
     rgbCode === pickedColor? (getAllSameColor(rgbCode),messageDisplay.textContent = message):evt.target.style.background='rgb(23,23,23)';
