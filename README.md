@@ -27,7 +27,7 @@ A game where one player can guess the correct color square among the 6 squares g
 <!-- Getting started -->
 
 here is a link to my game. 
-[I'm an inline-style link with title](https://fagleyali.github.io/Project-One/ "rgb Color Guessing Game")
+[rgb Color Guessing Game](https://fagleyali.github.io/Project-One/ "rgb Color Guessing Game")
 <!--Instructions-->
 1. First you have to guess what color is matched with the given rgb color code.
 2. Then you have to click the guessed square area.
