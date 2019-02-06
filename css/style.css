@@ -80,17 +80,19 @@ h1 {
     font-size: 30px;
     font-weight: 400;
     letter-spacing: 1.5px;
+    line-height: 1.1;
 }
 
 
 #rgb {
-    font-size: 50px;
-    letter-spacing: 0cm;
+    font-size: 200%;
+    
 }
 
 #stripe {
     background: rgb(141, 108, 71);
     text-align: center;
+    height: 30px;
 }
 
 button {
@@ -99,7 +101,7 @@ button {
     background: none;
     color:whitesmoke;
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 1px;
     font-size: inherit;
     transition: all 0.3s;
@@ -117,6 +119,7 @@ button:hover{
     background: rgb(145,112,249);
     
 }
+
 
 
 .selected {
