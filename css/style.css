@@ -37,10 +37,7 @@
         padding-bottom: 30%;
         margin: 8px;
         border-radius: 15%;
-        
-       
-       
-  
+   
 }
 
 
@@ -69,19 +66,26 @@
 header {
     text-align: center;
     background:rgb(145,112,249);
-    padding: 20px 0;
+    padding: 5px 0;
     line-height: 1.1;
     height: 200px;
     font-size: .8em;
     color: white;
     font-weight: normal;
     margin: 0;
-
-
+    border-bottom: 1px solid black;
 }
 
-#RGB {
-    font-size: 200%;
+h1 {
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+
+#rgb {
+    font-size: 50px;
+    letter-spacing: 0cm;
 }
 
 #stripe {

@@ -8,7 +8,7 @@ A game where one player can guess the correct color square among the 6 squares g
 <!-- Screenshots of game go here -->
 
 ![Screenshot 1](./images/ScreenShot1.png)
-![Screenshot 2](./images/ScreenShot2.png)
+![Screenshot 2](./images/Screen Shot 2019-02-06 at 12.39.43 PM.png)
 ![Screenshot 3](./images/ScreenShot3.png)
 
 <!-- Screenshots of wireframe -->
