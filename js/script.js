@@ -21,13 +21,9 @@ const modes = document.querySelectorAll('.mode');
 let rgbCodeDisplay = document.querySelector('#rgb');
 let banners = document.querySelectorAll('header, section#stripe, .selected');
 
-
-
-
-
 /*----- event listeners -----*/ 
 modes.forEach(function(mode){
-    mode.addEventListener('click', handleGo);
+    mode.addEventListener('click', handleMode);
 })
 
 squares.forEach(function(square){
@@ -36,22 +32,22 @@ squares.forEach(function(square){
 
 reset.addEventListener('click', init);
 
-
-
-
 /*----- functions -----*/
+
+//Init functions
+//-------------------------------
 init();
-
-
 
 function init(){
     numOfSquares = {
-        e: 3,
-        h: 6
+        e: MIN_NUM_SQUARES,
+        h: MAX_NUM_SQUARES
     };
     render();
     
-}
+};
+
+
 
 function render(){
     modesClear();
@@ -62,14 +58,33 @@ function render(){
     
 }
 
+//---------------------------------------
+
+//Game modes handler
+//-----------------------------------
+
+function handleMode(evt){
+    modesClear();
+    clearSquareClass();
+    toggleBannerColors();
+    evt.target.className = 'mode selected';
+    let mode = evt.target.textContent
+    mode === 'Easy'? getSquaresColor(easyMode,numOfSquares.e): getSquaresColor(hardMode,numOfSquares.h);
+};
+
+//---------------------------------
+
+// Win/loose handler
+//-----------------------------------
 
 function checkRGB(evt){
     modesClear();
     let rgbCode = evt.target.style.background;
    
-    rgbCode === pickedColor? (getAllSameColor(rgbCode),messageDisplay.textContent = message.w):(evt.target.style.background='rgb(23,23,23)',messageDisplay.textContent = message.l);
-   
+    rgbCode === pickedColor? (getAllSameColor(rgbCode),messageDisplay.textContent = message.w, reset.textContent = 'Play again?'):(evt.target.style.background='rgb(23,23,23)',messageDisplay.textContent = message.l);
+    
 }
+
 
 function getAllSameColor(code){
     squares.forEach(function(square){
@@ -78,6 +93,10 @@ function getAllSameColor(code){
     toggleBannerColors(code);
 }
 
+// ----------------------------------
+
+// Initialization
+//------------------------------------
 
 function modesClear(){
     modes.forEach(function(mode){
@@ -85,22 +104,14 @@ function modesClear(){
        
     })
     messageDisplay.textContent = '';
+    reset.textContent = 'New Colors';
 };
-
-function handleGo(evt){
-    modesClear();
-    clearSquareClass();
-    toggleBannerColors();
-    evt.target.className = 'mode selected';
-    let mode = evt.target.textContent
-    mode === 'Easy'? getSquaresColor(easyMode,numOfSquares.e): getSquaresColor(hardMode,numOfSquares.h);
-}
 
 function clearSquareClass(){
     squares.forEach(function(square){
         square.classList.remove('square1');
     })
-}
+};
 
 function toggleBannerColors(str){
     
@@ -114,7 +125,13 @@ function toggleBannerColors(str){
             idx===2?  banner.style.background = '':banner.style.background=bannerColorArr[idx];
         })
     }
-}
+};
+
+//--------------------------------------------------
+
+
+//Sqaures handler
+//----------------------------------------
 
 function getSquaresColor(arr,num){
     let id = getRandomNumber(num);
@@ -129,11 +146,13 @@ function getRGBCode(){
     let g = getRandomNumber(256);
     let b = getRandomNumber(256);
     return (`rgb(${r}, ${g}, ${b})`);
-}
+};
 
 function getRandomNumber(num){
     return Math.floor(Math.random()*num);
-}
+};
+
+//-------------------------------------------------------
 
 
 //1. Create 6 Squares of different colors for guessing. 
