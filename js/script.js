@@ -82,7 +82,13 @@ function checkRGB(evt){
     let rgbCode = evt.target.style.background;
    
     rgbCode === pickedColor? (getAllSameColor(rgbCode),messageDisplay.textContent = message.w, reset.textContent = 'Play again?'):(evt.target.style.background='rgb(23,23,23)',messageDisplay.textContent = message.l);
-    
+    /* Your javascript is beautiful, Ali! The only suggestion
+     * I would make here is to try to avoid having
+     * your javascript span into long lines like how you wrote the
+     * expression on line 84. Other than that, Great job!!!! 
+     */
+     
+
 }
 
 
