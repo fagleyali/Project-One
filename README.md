@@ -14,11 +14,17 @@ A game where one player can guess the correct color square among the 6 squares g
 <!-- Screenshots of wireframe -->
 
 ![Wirefrem Image](./images/wireframe.png)
-![Screen Shot of Game]
-![Screen Shot of Game]
+![Screen Shot of Game] 
+<!-- Be careful about leaving behind unused image tags in your markdown-->
+![Screen Shot of Game] 
+<!-- Be careful about leaving behind unused image tags in your markdown-->
 
 <!-- Technologies used-->
 
+<!-- 
+I would recommend adding a title tag here to indicate these
+are the technologies you used
+-->
 - Html
 - JavaScript
 - CSS
